@@ -1,5 +1,6 @@
 Requires a config.php file with contents:
 
+```
 <?php
 return array(
     'host' => 'localhost',
@@ -9,3 +10,4 @@ return array(
 );
 
 ?>
+```
