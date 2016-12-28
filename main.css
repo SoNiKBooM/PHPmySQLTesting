@@ -24,3 +24,9 @@ h3 {
 #PHP h2{
     text-align: center;
 }
+
+b #logout {
+    float: right;
+    text-align: right;
+    color: red;
+}

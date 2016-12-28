@@ -2,7 +2,7 @@
 
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script type="text/javascript" src="main.js"></script>
+
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
@@ -43,10 +43,9 @@
             $sql = "INSERT INTO users (first_name, last_name, username, reg_date, hash) VALUES ('$fname', '$lname', '$uname', NOW(), '$hash')";
 
             if ($conn->query($sql) === TRUE) {
-                echo "Record updated successfully";
+                header('location: login.php');
             } else {
                 echo "Error updating record: " . $conn->error;
-                echo $pword;
             }
 
             $conn->close();

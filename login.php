@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(isset($_SESSION['login_user'])){
+    header("location: profile.php");
+}
+?>
+
 <html>
 
 <head>
@@ -18,6 +25,7 @@
         <?php
         $configs = include('config.php');
 
+
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $servername = $configs["host"];
             $username = $configs["username"];
@@ -37,11 +45,12 @@
             $hash = $row["hash"];
 
             if(password_verify($pword, $hash) )  {
-                echo "Logged in successfully";
+                session_start();
+                $_SESSION['login_user']=$uname;
+                header("location: profile.php");
             } else {
                 echo "Incorrect Credentials, Try again...";
             }
-
 
             $conn->close();
         }
