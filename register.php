@@ -43,9 +43,11 @@
             $sql = "INSERT INTO users (first_name, last_name, username, reg_date, hash) VALUES ('$fname', '$lname', '$uname', NOW(), '$hash')";
 
             if ($conn->query($sql) === TRUE) {
-                header('location: login.php');
+                header('location: login.php?msg=You have successfully registered.');
             } else {
-                echo "Error updating record: " . $conn->error;
+                echo '<script language="javascript">';
+                echo 'alert("Error updating record: " . $conn->error;)';
+                echo '</script>';
             }
 
             $conn->close();

@@ -11,7 +11,7 @@ session_start();
 
 $uname = $_SESSION['login_user'];
 
-$sql = "SELECT user_id,first_name,last_name,username,reg_date,hash FROM users WHERE username='$uname'";
+$sql = "SELECT user_id,first_name,last_name,username,reg_date,hash,profile_pic FROM users WHERE username='$uname'";
 $ses_sql = mysqli_query($conn,$sql);
 $row = mysqli_fetch_assoc($ses_sql);
 
@@ -20,7 +20,8 @@ $first_name = $row['first_name'];
 $last_name = $row['last_name'];
 $login_session = $row['username'];
 $reg_date = $row['reg_date'];
-
+$profile_pic_url = $row['profile_pic'];
+$dirPath = dirname(getcwd());
 
 
 if(!isset($login_session)){

@@ -3,7 +3,9 @@ session_start();
 if(isset($_SESSION['login_user'])){
     header("location: profile.php");
 }
+
 ?>
+
 
 <html>
 
@@ -49,11 +51,20 @@ if(isset($_SESSION['login_user'])){
                 $_SESSION['login_user']=$uname;
                 header("location: profile.php");
             } else {
-                echo "Incorrect Credentials, Try again...";
+                echo '<script language="javascript">';
+                echo 'alert("Incorrect Username or Password")';
+                echo '</script>';
             }
 
             $conn->close();
         }
+
+        ?>
+
+        <?php
+        if(isset($_GET['msg'])) {
+            echo $_GET['msg'];
+        } else {};
 
         ?>
 
@@ -73,6 +84,7 @@ if(isset($_SESSION['login_user'])){
                 <div class="offset-lg-2 col-lg-10">
                     <button type="submit" class="btn btn-primary" formmethod="post" formaction="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">Login</button>
                     <button type="submit" class="btn btn-danger" formaction="index.php">Go Back</button>
+
                 </div>
             </div>
 
